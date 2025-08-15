@@ -1,35 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="project.css">
-    <title>my project</title>
+    <title>Change Text Cycle</title>
 </head>
 <body>
-    <p1 id="obb">i not rak namwan</p1>
-    <button class="pp" type="button" onclick="Myfunction()";>Changne Text</button>
-    <button class="gg" type="button" onclick="youfunction()";>Next Text</button>
-    <button class="dd" type="button" onclick="ourfunction()";>Defult Text</button>
 
-    <script>
-        function Myfunction() {
-            document.getElementById("obb").innerHTML = '<span id="ogg">haha gu gohok</span>';
+<h1 id="text">Hello World</h1>
+<button id="btn">Change Contents</button>
+
+<script>
+    // ข้อความที่ต้องการให้แสดงวนไป
+    const messages = [
+        "Hello World",
+        "Welcome",
+        "This is JavaScript",
+        "Learning is fun",
+        "Back to start!"
+    ];
+
+    let index = 0; // เริ่มจากข้อความแรก
+
+    document.getElementById("btn").addEventListener("click", function() {
+        // เลื่อนไปข้อความถัดไป
+        index++;
+
+        // ถ้าถึงท้ายสุด ให้วนกลับไปเริ่มใหม่
+        if (index >= messages.length) {
+            index = 0;
         }
 
-        alert("Welcome To My website");
+        // เปลี่ยนข้อความ
+        document.getElementById("text").innerHTML = messages[index];
 
-        console.log(document.getElementById("obb"));
-
-        function youfunction() {
-            document.getElementById("ogg").innerHTML = "หยอกเล่นๆ";
+        // เปลี่ยนปุ่มตามสถานะ
+        if (index === 0) {
+            this.innerHTML = "Change Contents";
+        } else if (index === messages.length - 1) {
+            this.innerHTML = "Default Text";
+        } else {
+            this.innerHTML = "Next Text";
         }
-
-        function ourfunction() {
-            document.getElementById("ogg").innerHTML = '<span id="odd">mai re hai mueng rok</span>';
-        }
-        
-    </script> 
+    });
+</script>
 
 </body>
 </html>
